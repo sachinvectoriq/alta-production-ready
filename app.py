@@ -925,9 +925,9 @@ def export_report():
 #         #flush()
 #         return jsonify({"message": f"Error checking doc_audit_report: {e}"}), 500
 
-from text_report import get_text_data_report
+from nosql_text_report import get_text_data_report
 @app.route('/text_data_report', methods=['GET'])
-def text_data_report():
+def call_nosql_text_data_report():
     user_name=request.args.get('user_name',None)
     try:
         #log("INFO", "Received request to fetch text audit report", user_name=user_name)
