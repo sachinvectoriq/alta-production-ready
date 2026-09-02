@@ -149,7 +149,7 @@ def export_table_data():
 
         #log("INFO", f"Executing query for table export.", data={"query": query, "params_count": len(query_params)},user_name=user_name)
         if table_name== 'user_login_log':
-            query += "GROUP BY user_login_log.user"
+            query += " GROUP BY user_login_log.user"
         cur.execute(query, tuple(query_params))
 
         column_names = [desc[0] for desc in cur.description]

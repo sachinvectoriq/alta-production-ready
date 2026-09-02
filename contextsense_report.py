@@ -196,8 +196,8 @@ def get_contextsense_data_report():
             log("INFO", f"Query parameters (including excluded users): {query_params}", user_name=user_name) # Too verbose
 
         if domain_name:
-            query_conditions.append("domain=%s")
-            query_params.extend(domain_name)
+            query_conditions.append("domain_name=%s")
+            query_params.append(domain_name)
 
         # Add dynamic column filters
         for param_key, param_value in request.args.items():

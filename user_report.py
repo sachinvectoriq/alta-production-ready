@@ -239,7 +239,7 @@ def get_user_login_report():
             login_records.append(record)
 
         if export==1:
-            df = pd.DataFrame(rows, columns=column_names)
+            df = pd.DataFrame(login_records, columns=column_names)
 
 # 3. Save to an Excel file in memory (BytesIO) to return it without saving to disk
             output = BytesIO()

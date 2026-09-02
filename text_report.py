@@ -1,8 +1,7 @@
-from cmath import log
 import psycopg2
 import os
 from flask import Flask, request, jsonify
-#from logging_config import log, flush  # Commented out: Import log and flush functions
+from logging_config import log, flush
 import datetime
 import pandas as pd
 from io import BytesIO
