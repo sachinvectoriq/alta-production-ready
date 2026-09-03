@@ -10,7 +10,6 @@ python-dotenv<0.22
 python3-saml==1.16.0
 urllib3
 deepl
-psycopg2
 azure-storage-blob==12.19.1
 pytz
 langchain-community==0.3.16

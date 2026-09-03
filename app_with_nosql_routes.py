@@ -1,8 +1,12 @@
 import requests
 import time
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 import deepl
-import psycopg2
 from flask import Flask, request, jsonify, send_file, redirect, session
 import json
 from azure.storage.blob import BlobServiceClient
@@ -282,7 +286,7 @@ def call_text_trans_azure_secure():
     user_name = request.args.get('user_name', None) # Defaulting to None
     try:
         #log("INFO", "Received secure request for Azure text translation.", user_name=user_name)
-        result = text_trans_azure_secure(user_name)
+        result = text_trans_azure_secure()
         #log("INFO", "Secure Azure text translation handled.", user_name=user_name)
         #flush()
         return result
@@ -943,7 +947,7 @@ def total_row_count():
         return jsonify({"message": f"Error checking total row count: {e}"}), 500
 
 
-from export_report import export_table_data
+from nosql_export_report import export_table_data
 @app.route('/export_table_data', methods=['GET'])
 def export_report():
     user_name=request.args.get('user_name',None)
@@ -960,7 +964,7 @@ def export_report():
 
 
 
-from doc_report import get_doc_data_report
+from nosql_doc_report import get_doc_data_report
 @app.route('/doc_data_report', methods=['GET'])
 def doc_data_report():
     user_name=request.args.get('user_name',None)
@@ -975,7 +979,7 @@ def doc_data_report():
         #flush()
         return jsonify({"message": f"Error checking doc_audit_report: {e}"}), 500
         
-from text_report import get_text_data_report
+from nosql_text_report import get_text_data_report
 @app.route('/text_data_report', methods=['GET'])
 def text_data_report():
     user_name=request.args.get('user_name',None)
@@ -991,7 +995,7 @@ def text_data_report():
         return jsonify({"message": f"Error checking text_audit_report: {e}"}), 500
 
 
-from contextsense_report import get_contextsense_data_report
+from nosql_contextsense_report import get_contextsense_data_report
 @app.route('/contextsense_data_report', methods=['GET'])
 def contextsense_report():
     user_name=request.args.get('user_name',None)
@@ -1006,7 +1010,7 @@ def contextsense_report():
         #flush()
         return jsonify({"message": f"Error checking contextsense_audit_report: {e}"}), 500
 
-from user_report import get_user_login_report
+from nosql_user_report import get_user_login_report
 @app.route('/user_login_report', methods=['GET'])
 def user_report():
     user_name=request.args.get('user_name',None)
@@ -1022,7 +1026,7 @@ def user_report():
         return jsonify({"message": f"Error checking user_audit_report: {e}"}), 500
 
 
-from database_api import fetch_access_endpoint, delete_access_endpoint, insert_access_endpoint
+from nosql_database_api import fetch_access_endpoint, delete_access_endpoint, insert_access_endpoint
 
 @app.route('/insert_access', methods=['POST'])
 def insert_access():
@@ -1423,7 +1427,7 @@ def call_nosql_text_trans_azure_secure():
     user_name = request.args.get('user_name', None) # Defaulting to None
     try:
         #log("INFO", "Received secure request for Azure text translation.", user_name=user_name)
-        result = text_trans_azure_secure(user_name)
+        result = text_trans_azure_secure()
         #log("INFO", "Secure Azure text translation handled.", user_name=user_name)
         #flush()
         return result
