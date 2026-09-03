@@ -53,14 +53,12 @@ language_mapping = {
 formality_supported_languages = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"}
 
 # DEEPL_API_URL = 'https://api.deepl.com/v2/document'
-# DEEPL_API_KEY = '82a64fae-73d4-4739-9935-bbf3cfc15010'  # Replace with your actual DeepL API key
 
 
 
-DEEPL_API_URL = "https://api.deepl.com/v2/document"
-DEEPL_API_KEY = "82a64fae-73d4-4739-9935-bbf3cfc15010"  # Replace with your actual DeepL API key
-# STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=prodaitranslationstorage;AccountKey=nUJ0M5ErCZMRNdD6HvDgT1xYzqr32u7TMTTShfm+62qRIOdoasPBbIkjJjhIdJwLr2hslUtxYJaE+AStqJEvLw==;EndpointSuffix=core.windows.net"
-STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=devaitranslationstorage;AccountKey=GtiG/Hm1kzpGy8aElsdqgBiApPvUgEg+8DbylzCUYV+f4ZCfsNFRCLLIsfrvPemzXqm5hnIw6VGA+AStpe8FWQ==;EndpointSuffix=core.windows.net"
+DEEPL_API_URL = os.getenv("DEEPL_API_URL", "https://api.deepl.com/v2/document")
+DEEPL_API_KEY = os.getenv("DEEPL_API_KEY")
+STORAGE_CONNECTION_STRING = os.getenv("STORAGE_CONNECTION_STRING")
 
 
 

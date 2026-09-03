@@ -1,5 +1,6 @@
 # test_settings_azure.py
 
+import os
 import requests
 from flask import request, jsonify
 from azure.storage.blob import BlobServiceClient
@@ -10,8 +11,8 @@ from logging_config import log, flush
 
 # Hardcoded source document URL, source language, and target language
 # Consider making these configurable via environment variables or a settings table
-SOURCE_DOCUMENT_URL = "https://devaitranslationstorage.blob.core.windows.net/source/Body%20is%20the%20temple.docx?sp=r&st=2024-10-10T13:21:05Z&se=2026-02-25T21:21:05Z&spr=https&sv=2022-11-02&sr=b&sig=TUldqtSd0ljLMMOzrMnrot0FzBI7r0uwz%2BnDKkpntRc%3D"
-TARGET_DOCUMENT_URL = "https://devaitranslationstorage.blob.core.windows.net/translated/translated_doc_es.docx"
+SOURCE_DOCUMENT_URL = os.getenv("SOURCE_DOCUMENT_URL")
+TARGET_DOCUMENT_URL = os.getenv("TARGET_DOCUMENT_URL")
 SOURCE_LANGUAGE_CODE = "en"  # English as source language
 TARGET_LANGUAGE_CODE = "es"  # Spanish as target language
 
