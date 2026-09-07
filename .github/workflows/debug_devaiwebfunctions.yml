@@ -1,4 +1,4 @@
-\```yaml
+
 # Docs for the Azure Web Apps Deploy action:
 # https://github.com/Azure/webapps-deploy
 #
@@ -86,4 +86,3 @@ jobs:
           app-name: 'Devaiwebfunctions'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2EEEFAB5FC104F78BCF52A37EA16D24A }}
-```
