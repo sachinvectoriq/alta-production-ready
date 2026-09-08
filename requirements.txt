@@ -14,9 +14,9 @@ azure-storage-blob==12.19.1
 pytz
 langchain-community==0.3.16
 langchain-openai>=1.0.1
-langchain==0.3.17
+langchain==0.3.16
+langchain-core==0.3.16
 #marshmallow==3.26.1
-langchain-core==0.3.33
 pydantic==2.10.6
 tiktoken==0.8.0
 lxml==5.3.1
