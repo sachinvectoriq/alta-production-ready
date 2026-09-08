@@ -805,21 +805,8 @@ def call_delete_core_prompt():
         #flush()
         return jsonify({"message": f"Error deleting core prompt: {e}"}), 500
 
-from process_context_sense import process_context_sense
-@app.route('/process_context_sense', methods=['POST'])
-def call_process_context_sense():
-    user_name = request.args.get('user_name', None) # Defaulting to None
-    try:
-        #log("INFO", "Received request to process context sense.", user_name=user_name)
-        result = process_context_sense()
-        #log("INFO", "Context sense processed.", user_name=user_name)
-        #flush()
-        return result
-    except Exception as e:
-        #log("ERROR", f"Error in processing context sense route: {e}", user_name=user_name, data={"error_details": str(e)})
-        #flush()
-        return jsonify({"message": f"Error processing context sense: {e}"}), 500
-
+# DEPRECATED: /process_context_sense route removed (PostgreSQL no longer exists after migration to Cosmos DB)
+# USE: POST /nosql/process_context_sense instead
 
 from contextsense_core_prompt_id_updated import update_prompt
 @app.route('/core_prompt/update', methods=['PUT'])
