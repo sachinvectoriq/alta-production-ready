@@ -12,10 +12,10 @@ urllib3
 deepl
 azure-storage-blob==12.19.1
 pytz
-langchain-community==0.3.16
+langchain-community>=0.3.16
 langchain-openai>=1.0.1
-langchain==0.3.16
-langchain-core==0.3.16
+langchain>=0.3.16
+langchain-core>=0.3.16
 #marshmallow==3.26.1
 pydantic==2.10.6
 tiktoken==0.8.0
