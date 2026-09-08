@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from pydantic import BaseModel, Field, ValidationError
 from typing import Optional, Dict, List, Any
 from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.output_parsers import PydanticOutputParser
 from azure.cosmos import CosmosClient, exceptions
