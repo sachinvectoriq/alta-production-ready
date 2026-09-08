@@ -304,7 +304,7 @@ def secure_xml_wrap(tag_name: str, value: Optional[str]) -> str:
     safe_value = str(value).replace(f"</{tag_name}>", "")
     return f"<{tag_name}>{safe_value}</{tag_name}>"
 
-@app.route('/process_context_sense/', methods=['POST'])
+
 def process_context_sense():
     """Main API endpoint for processing context sense."""
     conn = connect_db()  # Get database connection
