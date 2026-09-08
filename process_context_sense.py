@@ -447,7 +447,6 @@ def process_context_sense():
         messages = [system_message, human_message]
         log_message(conn, 'INFO', 'Constructed messages for LLM invocation',None,session_id)  # log
 
-
         
         # llm = AzureChatOpenAI(
         #     deployment_name=os.getenv("Alta_deployment_name"),
