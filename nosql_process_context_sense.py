@@ -224,9 +224,8 @@ def secure_xml_wrap(tag_name: str, value: Optional[str]) -> str:
     return f"<{tag_name}>{safe_value}</{tag_name}>"
 
 
-@app.route('/process_context_sense/', methods=['POST'])
 def process_context_sense():
-    """Main API endpoint for processing context sense."""
+    """Main API endpoint for processing context sense (Cosmos DB version)."""
     conn = None  # no real DB connection needed anymore; kept as a variable for log_message() call compatibility
     session_id = str(uuid.uuid4())
 
