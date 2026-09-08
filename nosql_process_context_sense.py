@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from pydantic import BaseModel, Field, ValidationError
 from typing import Optional, Dict, List, Any
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.output_parsers import PydanticOutputParser
@@ -355,13 +355,11 @@ def process_context_sense():
         messages = [system_message, human_message]
         log_message(conn, 'INFO', 'Constructed messages for LLM invocation', None, session_id)
 
-        llm = AzureChatOpenAI(
-            deployment_name=os.getenv("Alta_deployment_name"),
-            model="gpt-5.1",
-            temperature=0,
-            azure_ad_token_provider=token_provider,
-            azure_endpoint=os.getenv("Alta_Azure_end_point"),
-            openai_api_version=os.getenv("Alta_api_version")
+        llm = ChatOpenAI(
+            model=os.getenv("Alta_deployment_name"),
+            base_url=os.getenv("Alta_Azure_end_point"),
+            api_key=token_provider,
+            temperature=0
         )
         try:
             log_message(conn, 'INFO', 'LLM invocation triggered', {"llm request data": [m.content for m in messages]}, session_id)
