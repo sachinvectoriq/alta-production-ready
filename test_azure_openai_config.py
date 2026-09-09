@@ -18,7 +18,7 @@ print("=" * 60)
 # 1. Check environment variables
 print("\n1. Checking Environment Variables:")
 endpoint = os.getenv("Alta_Azure_end_point")
-deployment = os.getenv("Alta_deployment_name")
+deployment = os.getenv("Alta_Deployment_name")
 api_version = os.getenv("Alta_api_version")
 
 print(f"   Endpoint: {endpoint}")

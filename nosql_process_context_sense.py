@@ -355,10 +355,15 @@ def process_context_sense():
         messages = [system_message, human_message]
         log_message(conn, 'INFO', 'Constructed messages for LLM invocation', None, session_id)
 
+        # openai client appends the operation path (chat/completions), so base_url must be the /openai/v1/ root
+        azure_endpoint = os.getenv("Alta_Azure_end_point", "")
+        if "/openai/v1" in azure_endpoint:
+            azure_endpoint = azure_endpoint.split("/openai/v1")[0] + "/openai/v1/"
+
         llm = ChatOpenAI(
-            model=os.getenv("Alta_deployment_name"),
-            base_url=os.getenv("Alta_Azure_end_point"),
-            api_key=token_provider,
+            model=os.getenv("Alta_Deployment_name"),
+            base_url=azure_endpoint,
+            api_key=token_provider(),
             temperature=0
         )
         try:
