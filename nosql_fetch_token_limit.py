@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from azure.cosmos import CosmosClient, exceptions
+from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 import os
 
@@ -7,7 +8,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), os.getenv('COSMOS_KEY'))
+cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), credential=DefaultAzureCredential())
 database = cosmos_client.get_database_client(os.getenv('COSMOS_DB_NAME'))
 container = database.get_container_client('alta_var_settings')
 

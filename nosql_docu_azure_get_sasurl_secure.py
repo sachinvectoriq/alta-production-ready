@@ -4,13 +4,14 @@ import logging
 from azure.storage.blob import BlobServiceClient, generate_blob_sas, BlobSasPermissions
 from datetime import datetime, timedelta
 from azure.cosmos import CosmosClient, exceptions
+from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 app = Flask(__name__)
 
-cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), os.getenv('COSMOS_KEY'))
+cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), credential=DefaultAzureCredential())
 settings_container = cosmos_client.get_database_client(os.getenv('COSMOS_DB_NAME')).get_container_client('settings')
 
 api_version = "2024-05-01"

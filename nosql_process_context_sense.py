@@ -18,7 +18,7 @@ import pandas as pd
 app = Flask(__name__)
 load_dotenv()
 
-cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), os.getenv('COSMOS_KEY'))
+cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), credential=DefaultAzureCredential())
 database = cosmos_client.get_database_client(os.getenv('COSMOS_DB_NAME'))
 logs_container = database.get_container_client('logs')
 alta_filters_container = database.get_container_client('alta_filters')

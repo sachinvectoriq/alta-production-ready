@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from azure.cosmos import CosmosClient, exceptions
+from azure.identity import DefaultAzureCredential
 from azure.core import MatchConditions
 from dotenv import load_dotenv
 import uuid
@@ -9,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), os.getenv('COSMOS_KEY'))
+cosmos_client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), credential=DefaultAzureCredential())
 database = cosmos_client.get_database_client(os.getenv('COSMOS_DB_NAME'))
 container = database.get_container_client('contextsense')
 trans_log_container = database.get_container_client('user_text_trans_log')

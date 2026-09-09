@@ -1,10 +1,11 @@
 from azure.cosmos import CosmosClient, PartitionKey
+from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), os.getenv('COSMOS_KEY'))
+client = CosmosClient(os.getenv('COSMOS_ENDPOINT'), credential=DefaultAzureCredential())
 
 database = client.create_database_if_not_exists(id=os.getenv('COSMOS_DB_NAME'))
 print(f"Database ready: {database.id}")

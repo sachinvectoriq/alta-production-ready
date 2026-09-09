@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from azure.cosmos import CosmosClient, exceptions
+from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 import os
 
@@ -16,7 +17,7 @@ print("Starting token limit update server")
 
 cosmos_client = CosmosClient(
     os.getenv('COSMOS_ENDPOINT'),
-    os.getenv('COSMOS_KEY')
+    credential=DefaultAzureCredential()
 )
 
 database = cosmos_client.get_database_client(
